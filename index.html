@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <!-- Mobilde uygulama gibi tam ekran görünmesi için kritik ayar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Görev Merkezi</title>
+    
+    <!-- PWA Manifest Dosyası -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/192/3b82f6/ffffff?text=G">
+    
+    <!-- Tailwind CSS (CDN üzerinden, kurulum gerektirmez) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 font-sans">
+    
+    <div class="max-w-md mx-auto p-4 pt-8">
+        <h1 class="text-3xl font-bold text-blue-600 mb-6">Görevlerim</h1>
+        
+        <!-- Görev Ekleme Alanı -->
+        <div class="flex gap-2 mb-6">
+            <input type="text" id="taskInput" placeholder="Yeni bir görev ekle..." 
+                   class="flex-1 px-4 py-3 rounded-xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button onclick="addTask()" class="bg-blue-600 text-white px-5 py-3 rounded-xl font-semibold shadow-sm active:bg-blue-700">
+                Ekle
+            </button>
+        </div>
+
+        <!-- Görev Listesi -->
+        <ul id="taskList" class="space-y-3">
+            <!-- Görevler buraya Javascript ile eklenecek -->
+        </ul>
+    </div>
+
+    <!-- Uygulama Mantığı -->
+    <script src="app.js"></script>
+    
+    <!-- PWA Service Worker Kaydı -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
